@@ -4,11 +4,10 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import test.TestBase;
 
 import static com.codeborne.selenide.Selenide.page;
 
-public class pageTestProject extends TestBase {
+public class pageTestProject {
 
     @FindBy(how = How.XPATH, using = "//*[@id='quickSearchInput']")
     private SelenideElement FinderWindow;
@@ -69,9 +68,9 @@ public class pageTestProject extends TestBase {
         return page(pageTestProject.class);
     }
 
-    public pageTestProject TaskFinder() {
+    public pageTestProject TaskFinder(String ProjName) {
         FinderWindow.click();
-        FinderWindow.sendKeys(TaskName);
+        FinderWindow.sendKeys(ProjName);
         return page(pageTestProject.class);
     }
 
@@ -85,15 +84,15 @@ public class pageTestProject extends TestBase {
         return page(pageTestProject.class);
     }
 
-    public pageTestProject CreatingTaskName() {
+    public pageTestProject CreatingTaskName(String CreatingMyTaskName) {
         creatingTaskName.click();
-        creatingTaskName.sendKeys(CreatingTaskName);
+        creatingTaskName.sendKeys(CreatingMyTaskName);
         return page(pageTestProject.class);
     }
 
-    public pageTestProject Label() {
+    public pageTestProject Label(String labelTest) {
         label.click();
-        label.sendKeys(LabelText);
+        label.sendKeys(labelTest);
         return page(pageTestProject.class);
     }
 
@@ -107,9 +106,9 @@ public class pageTestProject extends TestBase {
         return page(pageTestProject.class);
     }
 
-    public pageTestProject QuicSearchh() {
+    public pageTestProject QuicSearchh(String CreatingMyTaskName) {
         quicSearch.click();
-        quicSearch.sendKeys(CreatingTaskName);
+        quicSearch.sendKeys(CreatingMyTaskName);
         choiseMyTask.click();
         return page(pageTestProject.class);
     }
@@ -139,9 +138,9 @@ public class pageTestProject extends TestBase {
         return page(pageTestProject.class);
     }
 
-    public pageTestProject CommentWriter() {
+    public pageTestProject CommentWriter(String comment) {
         Selenide.switchTo().frame("mce_0_ifr");
-        commentWriter.sendKeys(MyComment);
+        commentWriter.sendKeys(comment);
         Selenide.switchTo().defaultContent();
         return page(pageTestProject.class);
     }

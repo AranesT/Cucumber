@@ -3,11 +3,9 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import test.TestBase;
-
 import static com.codeborne.selenide.Selenide.page;
 
-public class pageTestSelenium extends TestBase {
+public class pageTestSelenium {
 
     @FindBy(how = How.XPATH, using = "//*[@id='status-val']/span")
     private SelenideElement taskStatus;
@@ -16,7 +14,7 @@ public class pageTestSelenium extends TestBase {
     private SelenideElement currentVersion;
 
     public pageTestSelenium ShowStatus() {
-        System.out.println("Статус задачи " + TaskName + ": "+ taskStatus.getText().toString());
+        System.out.println("Статус задачи " + ": "+ taskStatus.getText().toString());
         return page(pageTestSelenium.class);
     }
 

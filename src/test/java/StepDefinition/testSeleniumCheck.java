@@ -1,34 +1,36 @@
 package StepDefinition;
 
-import Hooks.WebDriverInicialization;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Тогда;
-import org.openqa.selenium.WebDriver;
-import pages.pageMain;
+import pages.pageAuthorizition;
 import pages.pageTestSelenium;
 
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 
 public class testSeleniumCheck {
 
-    private WebDriver driver;
-    public testSeleniumCheck(){
-        this.driver = WebDriverInicialization.getDriver();
+    @Дано("Выполнена авторизация под логином {string} и паролем {string} для проверки статуса задачи TestSelenium")
+    public void Authorize(String login, String password){
+        open(utils.Configuration.getConfigurationValue("pageOfauthorize"));
+        page(pageAuthorizition.class).ClicButtonLogIn(login);
+        page(pageAuthorizition.class).ClicButtonPassword(password);
+        page(pageAuthorizition.class).ClicButtonIn();
     }
 
     @Дано("Октрытие страницы задачи")
-    public void октрытиеСтраницыЗадачи() {
-        driver.get("https://edujira.ifellow.ru/browse/TEST-374?jql=text%20~%20%22TestSelenium%22");
+    public void openTaskPage() {
+        open(utils.Configuration.getConfigurationValue("testSeleniumUrl"));
     }
 
     @Тогда("Проверка статуса")
-    public void проверкаСтатуса() {
+    public void statusCheck() {
         page(pageTestSelenium.class).ShowStatus();
     }
 
     @И("Проверка версии")
-    public void проверкаВерсии() {
+    public void versionCheck() {
         page(pageTestSelenium.class).ShowVersion();
     }
 }

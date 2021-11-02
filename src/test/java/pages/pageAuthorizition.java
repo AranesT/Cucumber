@@ -3,11 +3,10 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import test.TestBase;
 
 import static com.codeborne.selenide.Selenide.page;
 
-public class pageAuthorizition extends TestBase {
+public class pageAuthorizition {
 
     @FindBy(how = How.XPATH, using = "/html/body/div/section/div/div/section/form/div[1]/div[1]/div/div[1]/input")
     private SelenideElement LoginLane;
@@ -21,15 +20,15 @@ public class pageAuthorizition extends TestBase {
     @FindBy(how = How.XPATH, using = "//*[@id='login-form-cancel']")
     private SelenideElement ButtonCantIn;
 
-    public  pageAuthorizition ClicButtonLogIn() {
+    public  pageAuthorizition ClicButtonLogIn(String login) {
         LoginLane.click();
-        LoginLane.sendKeys(Login);
+        LoginLane.sendKeys(login);
         return page(pageAuthorizition.class);
     }
 
-    public pageAuthorizition ClicButtonPassword() {
+    public pageAuthorizition ClicButtonPassword(String password) {
         PasswordLane.click();
-        PasswordLane.sendKeys(Password);
+        PasswordLane.sendKeys(password);
         return page(pageAuthorizition.class);
     }
 
